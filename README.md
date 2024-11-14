@@ -22,13 +22,6 @@ We also provide a set of Face Detector for edge device in [here](https://github.
 | Mxnet(original image scale) | 89.58% | 87.11% | 69.12% |
 <p align="center"><img src="curve/Widerface.jpg" width="640"\></p>
 
-### Contents
-- [Installation](#installation)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [TensorRT](#tensorrt)
-- [References](#references)
-
 ## Installation
 ##### Clone and install
 1. git clone https://github.com/biubug6/Pytorch_Retinaface.git
@@ -91,21 +84,6 @@ python setup.py build_ext --inplace
 python evaluation.py
 ```
 3. You can also use widerface official Matlab evaluate demo in [Here](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html)
-### Evaluation FDDB
-
-1. Download the images [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to:
-```Shell
-./data/FDDB/images/
-```
-
-2. Evaluate the trained model using:
-```Shell
-python test_fddb.py --trained_model weight_file --network mobile0.25 or resnet50
-```
-
-3. Download [eval_tool](https://bitbucket.org/marcopede/face-eval) to evaluate the performance.
-
-<p align="center"><img src="curve/1.jpg" width="640"\></p>
 
 ## TensorRT
 -[TensorRT](https://github.com/wang-xinyu/tensorrtx/tree/master/retinaface)

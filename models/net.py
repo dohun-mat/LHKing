@@ -15,6 +15,15 @@ def conv_bn(inp, oup, stride = 1, leaky = 0):
         nn.LeakyReLU(negative_slope=leaky, inplace=True)
     )
 
+def conv_bn_m(inp, oup, stride = 1, leaky = 0):
+    return nn.Sequential(
+        nn.Conv2d(inp, oup, 3, stride, 1, bias=False)
+        # nn.Conv2d(inp, oup, 3, stride, 1, bias=False),
+        nn.BatchNorm2d(oup),
+        nn.LeakyReLU(negative_slope=leaky, inplace=True)
+    )
+    
+
 def conv_bn_no_relu(inp, oup, stride):
     return nn.Sequential(
         DeformableConv2d(inp, oup, 3, stride, 1, bias=False),
@@ -106,7 +115,7 @@ class MobileNetV1(nn.Module):
     def __init__(self):
         super(MobileNetV1, self).__init__()
         self.stage1 = nn.Sequential(
-            conv_bn(3, 8, 2, leaky = 0.1),    # 3
+            conv_bn_m(3, 8, 2, leaky = 0.1),    # 3
             conv_dw(8, 16, 1),   # 7
             conv_dw(16, 32, 2),  # 11
             conv_dw(32, 32, 1),  # 19
